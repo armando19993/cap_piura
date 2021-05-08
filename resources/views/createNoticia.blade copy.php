@@ -26,22 +26,22 @@
       </div>
     </div>
     <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-      <form class="" action="{{route('updateNoticia', $noticia->id)}}" method="post" enctype="multipart/form-data">
+      <form class="" action="{{route('saveNoticia')}}" method="post" enctype="multipart/form-data">
         @csrf
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
             <label for="">Titulo</label>
-            <input type="text" class="form-control" name="titulo" value="{{$noticia->titulo}}">
+            <input type="text" class="form-control" name="titulo" value="">
           </div>
         </div>
 
-        <!-- <div class="col-md-6">
+        <div class="col-md-6">
           <div class="form-group">
             <label for="">Fecha</label>
-            <input type="date" class="form-control" name="fecha" value="{{$noticia->fecha}}">
+            <input type="date" class="form-control" name="fecha" value="">
           </div>
-        </div> -->
+        </div>
 
         <div class="col-md-6">
           <div class="form-group">
@@ -49,8 +49,8 @@
             <select class="form-control" name="categoria">
               <option value="">-- SELECCIONE --</option>
               @foreach($categorias as $categoria)
-                <option value="{{$categoria->id}}" @if($categoria->id == $noticia->categoria_id) selected @endif>{{$categoria->categoria}}</option>
-              @endforeach 
+                <option value="{{$categoria->id}}">{{$categoria->categoria}}</option>
+              @endforeach
             </select>
           </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="col-md-12">
           <div class="form-group">
             <label for="">Descripcion</label>
-            <textarea  name="contenido" id="editor1" class="form-control ckeditor" rows="10" cols="80">{{$noticia->contenido}}</textarea>
+            <textarea  name="contenido" id="editor1" class="form-control ckeditor" rows="10" cols="80"></textarea>
           </div>
         </div>
 
@@ -70,20 +70,9 @@
         </div>
 
         <hr>
-      <h3 class="mt-4">Galeria</h3>
-      <hr>
-      <br>
-      <div class="col-md-12">
-
-        <div class="row">
-        @foreach($noticia->imagenes as $imagen)
-          <div class="col-md-4 card p-3 mt-3"> <img src="../uploads/noticias/{{$imagen->imagen}}" alt=""> </div>
-          <div class="col-md-2"> <a href="{{route('deleteImagenNoticia', $imagen->id)}}"><i class="fa fa-trash text-danger" style="font-size: 3em"></i></a></div>
-        @endforeach
-        </div>
-      </div>
+        <h2>Galeria Actual</h2>
+        <hr>
         
-
         <div class="col-md-12">
           <input type="submit" name="" class="btn btn-primary text-white form-control" value="Guardar">
         </div>

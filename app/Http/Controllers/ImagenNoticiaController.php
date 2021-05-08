@@ -80,6 +80,8 @@ class ImagenNoticiaController extends Controller
      */
     public function destroy(ImagenNoticia $imagenNoticia)
     {
-        //
+        
+        $imagenNoticia->delete();
+        return back();
     }
 }

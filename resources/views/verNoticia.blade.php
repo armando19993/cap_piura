@@ -22,6 +22,10 @@
               <i class="fa fa-trash"></i>  Eliminar Noticia
             </a>
 
+            <a class="btn btn-primary" href="{{route('editNoticia', $noticia->id)}}">
+              <i class="fa fa-edit"></i>  Editar
+            </a>
+
         </div>
       </div>
     </div>

@@ -34,6 +34,9 @@ Route::get('craeateNoticia', [App\Http\Controllers\NoticiaController::class, 'cr
 Route::post('saveNoticia', [App\Http\Controllers\NoticiaController::class, 'store'])->name('saveNoticia');
 Route::get('viewNoticia/{noticia}', [App\Http\Controllers\NoticiaController::class, 'show'])->name('viewNoticia');
 Route::get('deleteNoticia/{noticia}', [App\Http\Controllers\NoticiaController::class, 'destroy'])->name('deleteNoticia');
+Route::get('editNoticia/{noticia}', [App\Http\Controllers\NoticiaController::class, 'edit'])->name('editNoticia');
+Route::get('deleteImagenNoticia/{imagenNoticia}', [App\Http\Controllers\ImagenNoticiaController::class, 'destroy'])->name('deleteImagenNoticia');
+Route::post('updateNoticia/{noticia}', [App\Http\Controllers\NoticiaController::class, 'update'])->name('updateNoticia');
 //Fin Noticias
 
 //Junta Directiva

@@ -30,6 +30,13 @@ class NoticiaController extends Controller
         return view('createNoticia', ['categorias' => $categorias]);
     }
 
+    public function edit(Noticia $noticia)
+    {
+        $categorias = CategoriaNoticia::all();
+
+        return view('editNoticia', ['categorias' => $categorias, 'noticia' => $noticia]);
+    }
+
 
     public function store(Request $request)
     {
@@ -53,6 +60,28 @@ class NoticiaController extends Controller
 
         Session::flash('message','Noticia Creada con Exito!');
         return Redirect::to('/noticias');
+    }
+
+    public function update(Request $request, Noticia $noticia)
+    {
+      $noticia->categoria_id = $request->categoria;
+      $noticia->titulo = $request->titulo;
+      $noticia->contenido = $request->contenido;
+      $noticia->save();
+
+        $files = $request->file('image');
+
+        foreach($files as $file){
+        $cari = $this->upload_global($file, 'noticias');
+
+          $imagen = new ImagenNoticia();
+          $imagen->noticia_id = $noticia->id;
+          $imagen->imagen = $cari;
+          $imagen->save();
+        }
+
+        Session::flash('message','Noticia Actualizada con Exito!');
+        return back();
     }
 
 
