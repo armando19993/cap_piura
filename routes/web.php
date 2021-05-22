@@ -81,3 +81,11 @@ Route::get('editCurso/{curso}', [App\Http\Controllers\CursoController::class, 'e
 Route::post('updateCurso/{curso}', [App\Http\Controllers\CursoController::class, 'update'])->name('updateCurso');
 Route::get('deleteCurso/{curso}', [App\Http\Controllers\CursoController::class, 'destroy'])->name('deleteCurso');
 //Fin Cursos
+
+
+//Pagos
+Route::get('categoriasPagos', [App\Http\Controllers\CategoriasPagoController::class, 'index'])->name('categoriasPagos');
+Route::post('saveCategoriaPago', [App\Http\Controllers\CategoriasPagoController::class, 'store'])->name('saveCategoriaPago');
+Route::post('updateCategoriaPago', [App\Http\Controllers\CategoriasPagoController::class, 'update'])->name('updateCategoriaPago');
+Route::get('pagos', [App\Http\Controllers\PagoController::class, 'index'])->name('pagos');
+//Fin Pagos

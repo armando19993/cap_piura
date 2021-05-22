@@ -123,11 +123,32 @@
 
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-house-1"></span><span class="mtext">Cursos / Capacitaciones</span>
+							<span class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 0.8em;">Cursos / Capacitaciones</span>
 						</a>
 						<ul class="submenu">
 							<li><a href="{{route('categoriasCursos')}}">Categorias</a></li>
 							<li><a href="{{route('cursos')}}">Cursos</a></li>
+						</ul>
+					</li>
+
+
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-house-1"></span><span class="mtext">Pagos</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="{{route('categoriasPagos')}}">Categorias</a></li>
+							<li><a href="{{route('pagos')}}">Pagos</a></li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-house-1"></span><span class="mtext">Transacciones</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="{{route('dependencias')}}">Transacciones</a></li>
+							<li><a href="{{route('miembrosDirectorio')}}">Reportes</a></li>
 						</ul>
 					</li>
 

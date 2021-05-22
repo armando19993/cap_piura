@@ -7,18 +7,18 @@
       <div class="row">
         <div class="col-md-6 col-sm-12">
           <div class="title">
-            <h4>Crear Trabajo</h4>
+            <h4>Editar Noticia</h4>
           </div>
           <nav aria-label="breadcrumb" role="navigation">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{route('home')}}">Basicos</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Bolsa de Trabajo</li>
+              <li class="breadcrumb-item"><a href="{{route('home')}}">Noticias</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Editar Noticia</li>
             </ol>
           </nav>
         </div>
         <div class="col-md-6 col-sm-12 text-right">
 
-            <a class="btn btn-primary" href="{{route('bolsas')}}">
+            <a class="btn btn-primary" href="{{route('noticias')}}">
                 Regresar
             </a>
 

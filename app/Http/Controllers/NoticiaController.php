@@ -70,7 +70,7 @@ class NoticiaController extends Controller
       $noticia->save();
 
         $files = $request->file('image');
-
+        if($files != null){
         foreach($files as $file){
         $cari = $this->upload_global($file, 'noticias');
 
@@ -79,6 +79,7 @@ class NoticiaController extends Controller
           $imagen->imagen = $cari;
           $imagen->save();
         }
+      }
 
         Session::flash('message','Noticia Actualizada con Exito!');
         return back();
