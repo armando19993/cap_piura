@@ -39,19 +39,31 @@
 					<thead>
 						<tr role="row">
               <th>ID</th>
-              <th >Categoria</th>
+              <th >Pago</th>
+              <th >Estado</th>
               <th >Acciones</th>
             </tr>
 					</thead>
 					<tbody>
-          @foreach($categorias as $categoria)
+          @foreach($pagos as $pago)
 					<tr role="row" class="odd">
-							<td class="table-plus sorting_1" tabindex="0"> {{$categoria->id}} </td>
-							<td>{{$categoria->categoria}}</td>
+							<td class="table-plus sorting_1" tabindex="0"> {{$pago->id}} </td>
+							<td>{{$pago->pago}}</td>
+							<td>
+                @if($pago->estado == 1)
+                <span class="badge badge-success">Activo</span>
+                @else
+                <span class="badge badge-danger">Inactivo</span>
+                @endif
+              </td>
 							<td>
 								<div class="table-actions">
-                  <a href="#" onclick="editarCategoria({{$categoria->id}}, '{{$categoria->categoria}}')"><i class="icon-copy dw dw-edit text-success"></i></a>
-									{{-- <a href="{{route('deleteCategoriaNoticia', $categoria->id)}}" ><i class="icon-copy dw dw-delete-3 text-danger"></i></a> --}}
+                  <a href="{{route('editar-pago', $pago->id)}}"> <i class="fa fa-edit text-success"></i> </a>
+                  @if($pago->estado == 1)
+                  <a href="{{route('desactivarPago', $pago->id)}}"> <i class="fa fa-trash text-danger"></i> </a>
+                  @else
+                  <a href="{{route('activarPago', $pago->id)}}"> <i class="fa fa-check text-success"></i> </a>
+                  @endif
 								</div>
 							</td>
 						</tr>
@@ -73,12 +85,36 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form class="" action="{{route('saveCategoriaPago')}}" method="post">
+      <form class="" action="{{route('savePago')}}" method="post">
         @csrf
       <div class="modal-body">
-        <div class="form-group">
+      <div class="form-group">
           <label for="">Categoria</label>
-          <input type="text" class="form-control" name="categoria" value="">
+          <select name="categoria" class="form-control" id="">
+            <option value="">SELECCIONE</option>
+            @foreach($categorias as $categoria)
+            <option value="{{$categoria->id}}">{{$categoria->categoria}}</option>
+            @endforeach
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="">Pago</label>
+          <input type="text" class="form-control" name="pago" value="">
+        </div>
+
+        <div class="form-group">
+          <label for="">Concepto</label>
+          <textarea name="concepto" id="" class="form-control" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="">Estado</label>
+          <select name="estado" class="form-control" id="">
+            <option value="">SELECCIONE</option>
+            <option value="1">ACTIVO</option>
+            <option value="2">INACTIVO</option>
+          </select>
         </div>
       </div>
       <div class="modal-footer">

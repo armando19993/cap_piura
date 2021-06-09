@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -88,4 +89,21 @@ Route::get('categoriasPagos', [App\Http\Controllers\CategoriasPagoController::cl
 Route::post('saveCategoriaPago', [App\Http\Controllers\CategoriasPagoController::class, 'store'])->name('saveCategoriaPago');
 Route::post('updateCategoriaPago', [App\Http\Controllers\CategoriasPagoController::class, 'update'])->name('updateCategoriaPago');
 Route::get('pagos', [App\Http\Controllers\PagoController::class, 'index'])->name('pagos');
+Route::post('savePago', [App\Http\Controllers\PagoController::class, 'store'])->name('savePago');
+Route::get('desactivarPago/{pago}', [App\Http\Controllers\PagoController::class, 'desactivar'])->name('desactivarPago');
+Route::get('activarPago/{pago}', [App\Http\Controllers\PagoController::class, 'activar'])->name('activarPago');
+Route::get('editar-pago/{pago}', [App\Http\Controllers\PagoController::class, 'edit'])->name('editar-pago');
+Route::post('updatePago', [App\Http\Controllers\PagoController::class, 'update'])->name('updatePago');
 //Fin Pagos
+
+
+//Transacciones
+Route::get('transacciones', [App\Http\Controllers\TransaccionController::class, 'index'])->name('transacciones');
+//Transacciones
+
+//Usuarios Externos
+Route::get('usuarios-externos', [App\Http\Controllers\UsuariosExternoController::class, 'index'])->name('usuarios-externos');
+Route::get('desactivar-usuario-externo/{usuario}', [App\Http\Controllers\UsuariosExternoController::class, 'desactivar_usuario'])->name('desactivar-usuario-externo');
+Route::get('activar-usuario-externo/{usuario}', [App\Http\Controllers\UsuariosExternoController::class, 'activar_usuario'])->name('activar-usuario-externo');
+Route::get('editar-usuario-externo/{usuario}', [App\Http\Controllers\UsuariosExternoController::class, 'edit'])->name('editar-usuario-externo');
+Route::post('update-usuario-externo-web', [App\Http\Controllers\UsuariosExternoController::class, 'updateweb'])->name('update-usuario-externo-web');

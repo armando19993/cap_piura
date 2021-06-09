@@ -23,6 +23,7 @@ class NoticiaController extends Controller
     }
 
 
+
     public function create()
     {
         $categorias = CategoriaNoticia::all();
@@ -134,6 +135,14 @@ class NoticiaController extends Controller
         return response()->json([
           "noticias" => $noticias
         ]);
+    }
+
+    public function noticia(Noticia $noticia){
+      $noticia = Noticia::where('id', $noticia->id)->with('categoria', 'imagenes')->first();
+
+      return response()->json([
+        'noticia' => $noticia
+      ]);
     }
 
     public function noticiasByCategoria($categoria){

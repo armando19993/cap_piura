@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1f5f6f0f441a7b01cc0d20464fbc584a
+class ComposerStaticInitf63cbb33cfc3368875709d04eda60a70
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
@@ -542,6 +542,8 @@ class ComposerStaticInit1f5f6f0f441a7b01cc0d20464fbc584a
         'App\\Http\\Controllers\\NoticiaController' => __DIR__ . '/../..' . '/app/Http/Controllers/NoticiaController.php',
         'App\\Http\\Controllers\\PagoController' => __DIR__ . '/../..' . '/app/Http/Controllers/PagoController.php',
         'App\\Http\\Controllers\\RelacionCursoController' => __DIR__ . '/../..' . '/app/Http/Controllers/RelacionCursoController.php',
+        'App\\Http\\Controllers\\TransaccionController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransaccionController.php',
+        'App\\Http\\Controllers\\UsuariosExternoController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsuariosExternoController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -565,7 +567,10 @@ class ComposerStaticInit1f5f6f0f441a7b01cc0d20464fbc584a
         'App\\Models\\Noticia' => __DIR__ . '/../..' . '/app/Models/Noticia.php',
         'App\\Models\\Pago' => __DIR__ . '/../..' . '/app/Models/Pago.php',
         'App\\Models\\RelacionCurso' => __DIR__ . '/../..' . '/app/Models/RelacionCurso.php',
+        'App\\Models\\Transaccion' => __DIR__ . '/../..' . '/app/Models/Transaccion.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\UsuariosColegiado' => __DIR__ . '/../..' . '/app/Models/UsuariosColegiado.php',
+        'App\\Models\\UsuariosExterno' => __DIR__ . '/../..' . '/app/Models/UsuariosExterno.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -679,7 +684,10 @@ class ComposerStaticInit1f5f6f0f441a7b01cc0d20464fbc584a
         'Database\\Factories\\ImagenNoticiaFactory' => __DIR__ . '/../..' . '/database/factories/ImagenNoticiaFactory.php',
         'Database\\Factories\\NoticiaFactory' => __DIR__ . '/../..' . '/database/factories/NoticiaFactory.php',
         'Database\\Factories\\PagoFactory' => __DIR__ . '/../..' . '/database/factories/PagoFactory.php',
+        'Database\\Factories\\TransaccionFactory' => __DIR__ . '/../..' . '/database/factories/TransaccionFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
+        'Database\\Factories\\UsuariosColegiadoFactory' => __DIR__ . '/../..' . '/database/factories/UsuariosColegiadoFactory.php',
+        'Database\\Factories\\UsuariosExternoFactory' => __DIR__ . '/../..' . '/database/factories/UsuariosExternoFactory.php',
         'Database\\Seeders\\BolsaTrabajoSeeder' => __DIR__ . '/../..' . '/database/seeders/BolsaTrabajoSeeder.php',
         'Database\\Seeders\\CategoriaNoticiaSeeder' => __DIR__ . '/../..' . '/database/seeders/CategoriaNoticiaSeeder.php',
         'Database\\Seeders\\CategoriasPagoSeeder' => __DIR__ . '/../..' . '/database/seeders/CategoriasPagoSeeder.php',
@@ -687,6 +695,8 @@ class ComposerStaticInit1f5f6f0f441a7b01cc0d20464fbc584a
         'Database\\Seeders\\ImagenNoticiaSeeder' => __DIR__ . '/../..' . '/database/seeders/ImagenNoticiaSeeder.php',
         'Database\\Seeders\\NoticiaSeeder' => __DIR__ . '/../..' . '/database/seeders/NoticiaSeeder.php',
         'Database\\Seeders\\PagoSeeder' => __DIR__ . '/../..' . '/database/seeders/PagoSeeder.php',
+        'Database\\Seeders\\TransaccionSeeder' => __DIR__ . '/../..' . '/database/seeders/TransaccionSeeder.php',
+        'Database\\Seeders\\UsuariosExternoSeeder' => __DIR__ . '/../..' . '/database/seeders/UsuariosExternoSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
@@ -5239,10 +5249,10 @@ class ComposerStaticInit1f5f6f0f441a7b01cc0d20464fbc584a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1f5f6f0f441a7b01cc0d20464fbc584a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1f5f6f0f441a7b01cc0d20464fbc584a::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit1f5f6f0f441a7b01cc0d20464fbc584a::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit1f5f6f0f441a7b01cc0d20464fbc584a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf63cbb33cfc3368875709d04eda60a70::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf63cbb33cfc3368875709d04eda60a70::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitf63cbb33cfc3368875709d04eda60a70::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitf63cbb33cfc3368875709d04eda60a70::$classMap;
 
         }, null, ClassLoader::class);
     }

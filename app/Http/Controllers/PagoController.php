@@ -16,69 +16,51 @@ class PagoController extends Controller
         return view('pagos.index', ['pagos' => $pagos, 'categorias' => $categorias]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $pago = new Pago();
+        $pago->categoria_pago_id = $request->categoria;
+        $pago->pago = $request->pago;
+        $pago->concepto = $request->concepto;
+        $pago->estado = $request->estado;
+        $pago->save();
+
+        return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pago  $pago
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pago $pago)
+
+    public function desactivar(Pago $pago)
     {
-        //
+        $pago->estado = 2;
+        $pago->save();
+
+        return back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pago  $pago
-     * @return \Illuminate\Http\Response
-     */
+    public function activar(Pago $pago)
+    {
+        $pago->estado = 1;
+        $pago->save();
+
+        return back();
+    }
+
+
+    public function update(Request $request)
+    {
+        $pago = Pago::find($request->id);
+        $pago->categoria_pago_id = $request->categoria;
+        $pago->pago = $request->pago;
+        $pago->concepto = $request->concepto;
+        $pago->save();
+
+        return redirect()->route('pagos');
+    }
+
+
     public function edit(Pago $pago)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pago  $pago
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Pago $pago)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pago  $pago
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Pago $pago)
-    {
-        //
+        $categorias = CategoriasPago::all();
+        return view('pagos.edit', ['pago' => $pago, 'categorias' => $categorias]);
     }
 }

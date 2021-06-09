@@ -18,6 +18,8 @@ class CategoriaNoticiaController extends Controller
         return view('categoriasNoticias', ['categorias' => $categorias]);
     }
 
+    
+
 
     public function store(Request $request)
     {
