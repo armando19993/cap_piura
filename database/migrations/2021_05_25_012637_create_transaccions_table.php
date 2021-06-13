@@ -13,15 +13,15 @@ class CreateTransaccionsTable extends Migration
             $table->integer('reg_cap')->nullable();
             $table->integer('dni');
             $table->integer('monto');
-            $table->integer('pago_concepto');
+            $table->string('pago_concepto');
             $table->integer('estado');
-            $table->integer('tipo_documento');
-            $table->string('documento');
-            $table->string('razon_social');
-            $table->string('direccion');
+            $table->integer('tipo_documento')->nullable();
+            $table->string('documento')->nullable();
+            $table->string('razon_social')->nullable();
+            $table->string('direccion')->nullable();
             $table->date('fecha');
-            $table->string('comentario');
-            $table->string('nro_documento_electronico');
+            $table->string('comentario')->nullable();
+            $table->string('nro_documento_electronico')->nullable();
             $table->timestamps();
         });
     }

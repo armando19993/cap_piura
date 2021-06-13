@@ -89,7 +89,16 @@ class TransaccionController extends Controller
     }
 
     public function update_emision_factura(Request $request, Transaccion $transaccion){
-        return $request;
+        $transaccion->tipo_documento = $request->tipo_documento;
+        $transaccion->documento = $request->documento;
+        $transaccion->razon_social = $request->razon_social;
+        $transaccion->direccion = $request->direccion;
+
+        $transaccion->save();
+
+        $colegiado = UsuariosColegiado::where('reg_cap', $transaccion->reg_cap)->first();
+
+        return redirect()->route('view-colegiado', $colegiado->id);
     }
 
     /**

@@ -37,7 +37,7 @@
         <nav class="nav nav-pills flex-column flex-sm-row">
             <a class="flex-sm-fill text-sm-center nav-link active" id="bnt1" aria-current="page" href="{{route('view-colegiado', $usuario->id)}}">Datos del Colegiado</a>
             <a class="flex-sm-fill text-sm-center nav-link" href="#GenerarDeuda" onclick="nueva_deuda()" id="btn2">Generar Deuda</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="#PagosRealizados" id="bnt3" onclick="">Pagos Realizados</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#PagosRealizados" id="bnt3" onclick="pagados()">Pagos Realizados</a>
             <a class="flex-sm-fill text-sm-center nav-link" href="#Deudas" id="bnt4" onclick="deudas()">Deudas</a>
         </nav>
 
@@ -199,6 +199,40 @@
                 </tbody>
               </table>
         </div>
+
+
+        <div class="row col-md-12" class="text-center" style="padding-left: 1.2%; padding-right: 1.2%; margin-top: 2%; display: none; text-align: center;" id="pagados">
+          <h3 class="mb-2">Registro de Recibos Pagados</h3>
+
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Monto</th>
+                  <th scope="col">Concepto</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                  @foreach ($pagados as $pagado)
+
+
+                <tr>
+                  <th scope="row">{{$pagado->id}}</th>
+                  <td>S/ {{$pagado->monto}}.00</td>
+                  <td>{{$pagado->pago_concepto}}</td>
+                  <td>{{$pagado->fecha}}</td>
+                  <td>
+                      
+                      <a href=""> <i class="fa fa-file text-success" style="font-size: 2em;"></i> </a>
+                  </td>
+                </tr>
+
+                @endforeach
+              </tbody>
+            </table>
+      </div>
     </div>
 @endsection
 
@@ -231,6 +265,17 @@
         $("#bnt1").removeClass('active');
         $("#bnt3").removeClass('active');
         $("#bnt4").addClass('active');
+        $("#btn2").removeClass('active');
+    }
+
+    function pagados(){
+        $("#nueva_deuda").css('display', 'none');
+        $("#datos_colegiado").css('display', 'none');
+        $("#deudas").css('display', 'none');
+        $("#pagados").css('display', 'block');
+        $("#bnt1").removeClass('active');
+        $("#bnt3").addClass('active');
+        $("#bnt4").removeClass('active');
         $("#btn2").removeClass('active');
     }
 

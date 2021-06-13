@@ -14,7 +14,7 @@ class AddColumMedioPago extends Migration
     public function up()
     {
         Schema::table('transaccions', function (Blueprint $table) {
-            $table->date('medio_pago')->nullable();
+            $table->string('medio_pago')->nullable();
         });
     }
 
