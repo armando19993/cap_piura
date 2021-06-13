@@ -88,9 +88,9 @@
 								<div class="table-actions">
                   <a href="{{route('view-colegiado', $usuario->id)}}"> <i class="fa fa-eye text-success"></i> </a>
                   @if($usuario->estado == 1)
-                  <a href="{{route('desactivar-usuario-externo', $usuario->id)}}"> <i class="fa fa-trash text-danger"></i> </a>
+                  <a href="{{route('desactivar-usuario-colegiado', $usuario->id)}}"> <i class="fa fa-trash text-danger"></i> </a>
                   @else
-                  <a href="{{route('activar-usuario-externo', $usuario->id)}}"> <i class="fa fa-check text-success"></i> </a>
+                  <a href="{{route('activar-usuario-colegiado', $usuario->id)}}"> <i class="fa fa-check text-success"></i> </a>
                   @endif
 								</div>
 							</td>

@@ -16,6 +16,22 @@ class UsuariosColegiadoController extends Controller
         return view('usuarios-colegiados.index', ['usuarios' => $usuarios]);
     }
 
+    public function activar(UsuariosColegiado $colegiado)
+    {
+        $colegiado->estado = 1;
+        $colegiado->save();
+
+        return back();
+    }
+
+    public function desactivar(UsuariosColegiado $colegiado)
+    {
+        $colegiado->estado = 0;
+        $colegiado->save();
+
+        return back();
+    }
+
 
     public function create()
     {
