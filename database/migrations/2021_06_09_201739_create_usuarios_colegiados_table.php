@@ -23,7 +23,7 @@ class CreateUsuariosColegiadosTable extends Migration
             $table->string('sexo');
             $table->string('estado_civil');
             $table->integer('dni');
-            $table->integer('ruc')->nullable();
+            $table->string('ruc')->nullable();
             $table->integer('extranjeria')->nullable();
             $table->date('fecha_nacimiento');
             $table->string('direccion');
@@ -34,10 +34,17 @@ class CreateUsuariosColegiadosTable extends Migration
             $table->string('modalidad_trabajo');
             $table->string('cargo')->nullable();
             $table->string('empresa')->nullable();
-            $table->string('ruc')->nullable();
-            $table->string('direccion')->nullable();
-            $table->string('localidad')->nullable();
-            $table->string('referencia')->nullable();
+            $table->string('ruc_empresa')->nullable();
+            $table->string('direccion_empresa')->nullable();
+            $table->string('localidad_empresa')->nullable();
+            $table->string('referencia_empresa')->nullable();
+            $table->string('telefonos_empresa')->nullable();
+            $table->string('celular_empresa')->nullable();
+            $table->string('correo');
+            $table->string('correo_alternativa')->nullable();
+            $table->string('vitalicio')->nullable();
+            $table->string('universidad')->nullable();
+            $table->string('estado')->nullable();
             $table->timestamps();
         });
     }

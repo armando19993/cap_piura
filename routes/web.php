@@ -107,3 +107,13 @@ Route::get('desactivar-usuario-externo/{usuario}', [App\Http\Controllers\Usuario
 Route::get('activar-usuario-externo/{usuario}', [App\Http\Controllers\UsuariosExternoController::class, 'activar_usuario'])->name('activar-usuario-externo');
 Route::get('editar-usuario-externo/{usuario}', [App\Http\Controllers\UsuariosExternoController::class, 'edit'])->name('editar-usuario-externo');
 Route::post('update-usuario-externo-web', [App\Http\Controllers\UsuariosExternoController::class, 'updateweb'])->name('update-usuario-externo-web');
+
+
+//Usuarios Colegiados
+Route::get('usuarios-colegiados', [App\Http\Controllers\UsuariosColegiadoController::class, 'index'])->name('usuarios-colegiados');
+Route::get('view-colegiado/{usuariosColegiado}', [\App\Http\Controllers\UsuariosColegiadoController::class, 'show'])->name('view-colegiado');
+Route::get('getPagosByCategoria/{categoria}', [\App\Http\Controllers\PagoController::class, 'returnbycategory'])->name('getPagosByCategoria');
+Route::post('generar-deuda/{colegiado}', [\App\Http\Controllers\TransaccionController::class, 'store'])->name('generar-deuda');
+Route::get('edit-deuda/{transaccion}', [\App\Http\Controllers\TransaccionController::class, 'edit'])->name('edit-deuda');
+Route::post('update-transaccion-panel/{transaccion}', [\App\Http\Controllers\TransaccionController::class, 'update_panel'])->name('update-transaccion-panel');
+Route::post('update-pago-emision-factura/{transaccion}', [\App\Http\Controllers\TransaccionController::class, 'update_emision_factura'])->name('update-pago-emision-factura');

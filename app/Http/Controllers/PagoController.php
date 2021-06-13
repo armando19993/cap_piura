@@ -23,6 +23,7 @@ class PagoController extends Controller
         $pago->pago = $request->pago;
         $pago->concepto = $request->concepto;
         $pago->estado = $request->estado;
+        $pago->monto = $request->monto;
         $pago->save();
 
         return back();
@@ -52,6 +53,7 @@ class PagoController extends Controller
         $pago->categoria_pago_id = $request->categoria;
         $pago->pago = $request->pago;
         $pago->concepto = $request->concepto;
+        $pago->monto = $request->monto;
         $pago->save();
 
         return redirect()->route('pagos');
@@ -62,5 +64,16 @@ class PagoController extends Controller
     {
         $categorias = CategoriasPago::all();
         return view('pagos.edit', ['pago' => $pago, 'categorias' => $categorias]);
+    }
+
+    public function returnbycategory($categoria)
+    {
+        $pagos = Pago::where('categoria_pago_id', $categoria)->get();
+        $response = "<option value=''>SELECCIONE</option>";
+        foreach ($pagos as $pago) {
+            $response .= "<option value='$pago->id'>$pago->pago</option>";
+        }
+
+        return $response;
     }
 }

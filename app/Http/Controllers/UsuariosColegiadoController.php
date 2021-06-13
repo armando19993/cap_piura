@@ -2,26 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoriasPago;
+use App\Models\Transaccion;
 use App\Models\UsuariosColegiado;
 use Illuminate\Http\Request;
 
 class UsuariosColegiadoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $usuarios = UsuariosColegiado::all();
+
+        return view('usuarios-colegiados.index', ['usuarios' => $usuarios]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
@@ -38,26 +33,17 @@ class UsuariosColegiadoController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\UsuariosColegiado  $usuariosColegiado
-     * @return \Illuminate\Http\Response
-     */
     public function show(UsuariosColegiado $usuariosColegiado)
     {
-        //
+        $categorias = CategoriasPago::all();
+        $deudas = Transaccion::where('reg_cap', $usuariosColegiado->reg_cap)->where('estado', 1)->get();
+        $pagados = Transaccion::where('reg_cap', $usuariosColegiado->reg_cap)->where('estado', 2)->get();
+        return view('usuarios-colegiados.view', ['usuario' => $usuariosColegiado, 'categorias' => $categorias, 'deudas' => $deudas, 'pagados' => $pagados]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\UsuariosColegiado  $usuariosColegiado
-     * @return \Illuminate\Http\Response
-     */
     public function edit(UsuariosColegiado $usuariosColegiado)
     {
-        //
+        
     }
 
     /**

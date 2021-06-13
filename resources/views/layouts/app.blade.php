@@ -159,7 +159,7 @@
 						</a>
 						<ul class="submenu">
 							<li><a href="{{route('usuarios-externos')}}">Usuarios Invitados</a></li>
-							<li><a href="">Colegiados</a></li>
+							<li><a href="{{route('usuarios-colegiados')}}">Colegiados</a></li>
 						</ul>
 					</li>
 

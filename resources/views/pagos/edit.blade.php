@@ -52,6 +52,11 @@
         </div>
 
         <div class="form-group">
+            <label for="">Monto</label>
+            <input type="text" class="form-control" name="monto" value="{{$pago->monto}}">
+          </div>
+
+        <div class="form-group">
           <label for="">Concepto</label>
           <textarea name="concepto" id="" class="form-control" cols="30" rows="10">{{$pago->concepto}}</textarea>
         </div>
