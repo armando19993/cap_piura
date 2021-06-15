@@ -119,3 +119,4 @@ Route::post('update-transaccion-panel/{transaccion}', [\App\Http\Controllers\Tra
 Route::post('update-pago-emision-factura/{transaccion}', [\App\Http\Controllers\TransaccionController::class, 'update_emision_factura'])->name('update-pago-emision-factura');
 Route::get('activar-usuario-colegiado/{colegiado}', [App\Http\Controllers\UsuariosColegiadoController::class, 'activar'])->name('activar-usuario-colegiado');
 Route::get('desactivar-usuario-colegiado/{colegiado}', [App\Http\Controllers\UsuariosColegiadoController::class, 'desactivar'])->name('desactivar-usuario-colegiado');
+Route::get('actualizar_estado', [App\Http\Controllers\UsuariosColegiadoController::class, 'update_estado'])->name('actualizar_estado');
