@@ -33,20 +33,28 @@ class UsuariosColegiadoController extends Controller
     }
 
 
-    public function create()
+    public function update_estado()
     {
-        //
+        $usuarios = UsuariosColegiado::all();
+
+        foreach ($usuarios as $usuario ) {
+            $deudas = Transaccion::where('reg_cap', $usuario->reg_cap)->count();
+            if($deudas > 0){
+                $usuario->estado = 0;
+                $usuario->save();
+            }
+            else{
+                $usuario->estado = 1;
+                $usuario->save();
+            }
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function login(Request $request)
     {
-        //
+        $login = UsuariosColegiado::where('reg_cap', $request->reg_cap)->where('clave', sha1($request->clave))->first();
+
+        return $login;
     }
 
     public function show(UsuariosColegiado $usuariosColegiado)
@@ -57,9 +65,18 @@ class UsuariosColegiadoController extends Controller
         return view('usuarios-colegiados.view', ['usuario' => $usuariosColegiado, 'categorias' => $categorias, 'deudas' => $deudas, 'pagados' => $pagados]);
     }
 
-    public function edit(UsuariosColegiado $usuariosColegiado)
+    public function deudas($colegiado)
     {
-        
+        $deudas = Transaccion::where('reg_cap', $colegiado)->where('estado', 1)->get();
+
+        return $deudas;
+    }
+
+    public function pagados($colegiado)
+    {
+        $deudas = Transaccion::where('reg_cap', $colegiado)->where('estado', 2)->get();
+
+        return $deudas;
     }
 
     /**

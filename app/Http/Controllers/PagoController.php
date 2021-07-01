@@ -24,6 +24,7 @@ class PagoController extends Controller
         $pago->concepto = $request->concepto;
         $pago->estado = $request->estado;
         $pago->monto = $request->monto;
+        $pago->exonerable = $request->exonerable;
         $pago->save();
 
         return back();
@@ -54,6 +55,7 @@ class PagoController extends Controller
         $pago->pago = $request->pago;
         $pago->concepto = $request->concepto;
         $pago->monto = $request->monto;
+        $pago->exonerable = $request->exonerable;
         $pago->save();
 
         return redirect()->route('pagos');

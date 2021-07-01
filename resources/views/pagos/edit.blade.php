@@ -61,6 +61,15 @@
           <textarea name="concepto" id="" class="form-control" cols="30" rows="10">{{$pago->concepto}}</textarea>
         </div>
 
+        <div class="form-group">
+            <label for="">Exonerable</label>
+            <select name="exonerable" required class="form-control" id="">
+                <option value="">SELECCIONE</option>
+                <option value="1" @if($pago->exonerable == 1) selected @endif>NO</option>
+                <option value="2" @if($pago->exonerable == 2) selected @endif>SI</option>
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-primary form-control text-white">Guardar</button>
 
     </div>

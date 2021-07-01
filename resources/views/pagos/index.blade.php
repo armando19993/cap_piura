@@ -90,7 +90,7 @@
       <div class="modal-body">
       <div class="form-group">
           <label for="">Categoria</label>
-          <select name="categoria" class="form-control" id="">
+          <select name="categoria" class="form-control" required id="">
             <option value="">SELECCIONE</option>
             @foreach($categorias as $categoria)
             <option value="{{$categoria->id}}">{{$categoria->categoria}}</option>
@@ -100,27 +100,36 @@
 
         <div class="form-group">
           <label for="">Pago</label>
-          <input type="text" class="form-control" name="pago" value="">
+          <input type="text" class="form-control" required name="pago" value="">
         </div>
 
         <div class="form-group">
             <label for="">Monto</label>
-            <input type="text" class="form-control" name="monto" value="">
+            <input type="text" class="form-control" required name="monto" value="">
           </div>
 
         <div class="form-group">
           <label for="">Concepto</label>
-          <textarea name="concepto" id="" class="form-control" cols="30" rows="10"></textarea>
+          <textarea name="concepto" id="" required class="form-control" cols="30" rows="10"></textarea>
         </div>
 
         <div class="form-group">
           <label for="">Estado</label>
-          <select name="estado" class="form-control" id="">
+          <select name="estado" required class="form-control" id="">
             <option value="">SELECCIONE</option>
             <option value="1">ACTIVO</option>
             <option value="2">INACTIVO</option>
           </select>
         </div>
+
+          <div class="form-group">
+              <label for="">Exonerable</label>
+              <select name="exonerable" required class="form-control" id="">
+                  <option value="">SELECCIONE</option>
+                  <option value="1">NO</option>
+                  <option value="2">SI</option>
+              </select>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Transaccion;
+use App\Models\UsuariosColegiado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +34,15 @@ Route::post('update-clave-externo-app/{usuario}', [UsuariosExternoController::cl
 
 //Logins
 Route::post('login-externo', [UsuariosExternoController::class, 'login']);
+Route::post('login-colegiado', [UsuariosColegiadoController::class, 'login']);
+
+//Facturacion
+Route::get('verificarRUC/{ruc}', [FacturacionController::class, 'verificarruc']);
+
+
+//Estado de Cuenta Colegiados
+Route::get('deudas/{colegiado}', [UsuariosColegiadoController::class, 'deudas']);
+Route::get('pagados/{colegiado}', [UsuariosColegiadoController::class, 'pagados']);
+Route::get('deuda/{deuda}', [TransaccionController::class, 'show']);
+Route::post('update-deuda', [TransaccionController::class, 'update_tipo_documento']);
+Route::get('update-mercadopago-procesado/{pago}/{id_mercadopago}', [TransaccionController::class, 'update_mercado_pago']);

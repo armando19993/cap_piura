@@ -44,6 +44,7 @@ class TransaccionController extends Controller
         $trans->dni = $colegiado->dni;
         $trans->monto = $pago->monto;
         $trans->pago_concepto = $pago->concepto;
+        $trans->exonerable = $pago->exonerable;
         $trans->estado = 1;
         $trans->fecha = date("Y-m-d");
         $trans->save();
@@ -52,9 +53,9 @@ class TransaccionController extends Controller
         return redirect()->route('view-colegiado', $colegiado);
     }
 
-    public function show(Transaccion $transaccion)
+    public function show(Transaccion $deuda)
     {
-        //
+        return $deuda;
     }
 
     public function edit(Transaccion $transaccion)
@@ -64,9 +65,36 @@ class TransaccionController extends Controller
     }
 
 
-    public function update(Request $request, Transaccion $transaccion)
+    public function update_tipo_documento(Request $request)
     {
-        //
+        $trans = Transaccion::where('id', $request->id_deuda)->first();
+
+        if($request->tipo_documento == "boleta"){
+            $trans->tipo_documento = 1;
+            $trans->documento = $request->documento;
+            $trans->razon_social = $request->razon_social;
+            $trans->direccion = $request->direccion;
+            $trans->save();
+        }
+
+        if($request->tipo_documento == "factura"){
+            $trans->tipo_documento = 2;
+            $trans->documento = $request->documento;
+            $trans->razon_social = $request->razon_social;
+            $trans->direccion = $request->direccion;
+            $trans->save();
+        }
+
+        return $trans->monto;
+    }
+
+    public function update_mercado_pago(Transaccion $pago, $id_mercadopago){
+        $pago->estado = 2;
+        $pago->id_mercadopago = $id_mercadopago;
+        $pago->medio_pago = 1;
+        $pago->save();
+
+        return $pago;
     }
 
     public function update_panel(Request $request, Transaccion $transaccion)
