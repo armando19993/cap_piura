@@ -147,10 +147,19 @@
 							<span class="micon dw dw-house-1"></span><span class="mtext">Transacciones</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="{{route('dependencias')}}">Transacciones</a></li>
+							<li><a href="{{route('transacciones')}}">Transacciones</a></li>
 							<li><a href="{{route('miembrosDirectorio')}}">Reportes</a></li>
 						</ul>
 					</li>
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-house-1"></span><span class="mtext">Cetificado Habilidad</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{route('certificados-emitidos')}}">Certificados</a></li>
+                        </ul>
+                    </li>
 
 
 					<li class="dropdown">

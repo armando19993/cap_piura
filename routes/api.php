@@ -46,3 +46,9 @@ Route::get('pagados/{colegiado}', [UsuariosColegiadoController::class, 'pagados'
 Route::get('deuda/{deuda}', [TransaccionController::class, 'show']);
 Route::post('update-deuda', [TransaccionController::class, 'update_tipo_documento']);
 Route::get('update-mercadopago-procesado/{pago}/{id_mercadopago}', [TransaccionController::class, 'update_mercado_pago']);
+Route::get('detalle-pago/{pago}', [TransaccionController::class, 'detalle_pago']);
+
+
+//Certificados de Habilidad
+Route::post('emitir-certificado', [CertificadoHabilidadController::class, 'store']);
+Route::get('certificados-colegiados/{colegiado}', [CertificadoHabilidadController::class, 'certificadosColegiados']);

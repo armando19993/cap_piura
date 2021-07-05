@@ -99,6 +99,7 @@ Route::post('updatePago', [App\Http\Controllers\PagoController::class, 'update']
 
 //Transacciones
 Route::get('transacciones', [App\Http\Controllers\TransaccionController::class, 'index'])->name('transacciones');
+Route::get('detalle-transaccion/{transaccion}', [App\Http\Controllers\TransaccionController::class, 'detalle'])->name('detalle-transaccion');
 //Transacciones
 
 //Usuarios Externos
@@ -120,3 +121,8 @@ Route::post('update-pago-emision-factura/{transaccion}', [\App\Http\Controllers\
 Route::get('activar-usuario-colegiado/{colegiado}', [App\Http\Controllers\UsuariosColegiadoController::class, 'activar'])->name('activar-usuario-colegiado');
 Route::get('desactivar-usuario-colegiado/{colegiado}', [App\Http\Controllers\UsuariosColegiadoController::class, 'desactivar'])->name('desactivar-usuario-colegiado');
 Route::get('actualizar_estado', [App\Http\Controllers\UsuariosColegiadoController::class, 'update_estado'])->name('actualizar_estado');
+
+
+//Ceritificados de Habilidad
+Route::get('certificados-emitidos', [App\Http\Controllers\CertificadoHabilidadController::class, 'index'])->name('certificados-emitidos');
+Route::post('emitir-certificado', [App\Http\Controllers\CertificadoHabilidadController::class, 'store']);

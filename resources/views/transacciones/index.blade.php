@@ -37,10 +37,11 @@
 
       <table class="data-table table nowrap dataTable no-footer dtr-inline" id="DataTables_Table_0" role="grid">
 					<thead>
-						<tr role="row">
+			<tr role="row">
               <th>ID</th>
-              <th >Usuario</th>
-              <th >Tipo Documento</th>
+              <th >Concepto Pago</th>
+                <th >Estado del Pago</th>
+                <th >Tipo de Usuario</th>
               <th >Acciones</th>
             </tr>
 					</thead>
@@ -48,22 +49,25 @@
           @foreach($pagos as $pago)
 					<tr role="row" class="odd">
 							<td class="table-plus sorting_1" tabindex="0"> {{$pago->id}} </td>
-							<td>{{$pago->pago}}</td>
+							<td>{{$pago->pago_concepto}}</td>
 							<td>
-                @if($pago->estado == 1)
-                <span class="badge badge-success">Activo</span>
-                @else
-                <span class="badge badge-danger">Inactivo</span>
-                @endif
-              </td>
+                                @if($pago->estado == 1)
+                                <span class="badge badge-danger">No Pagado</span>
+                                @else
+                                <span class="badge badge-success">Pagado</span>
+                                @endif
+                              </td>
+                        <td>
+                            @if($pago->reg_cap == "")
+                                <span class="badge badge-success">No Colegiado</span>
+                            @else
+                                <span class="badge badge-warning">Colegiado</span>
+                            @endif
+                        </td>
 							<td>
 								<div class="table-actions">
-                  <a href="{{route('editar-pago', $pago->id)}}"> <i class="fa fa-edit text-success"></i> </a>
-                  @if($pago->estado == 1)
-                  <a href="{{route('desactivarPago', $pago->id)}}"> <i class="fa fa-trash text-danger"></i> </a>
-                  @else
-                  <a href="{{route('activarPago', $pago->id)}}"> <i class="fa fa-check text-success"></i> </a>
-                  @endif
+                                    <a href="{{route('detalle-transaccion', $pago->id)}}"> <i class="fa fa-eye text-success"></i> </a>
+                                    <a href="{{route('editar-pago', $pago->id)}}"> <i class="fa fa-file text-primary"></i> </a>
 								</div>
 							</td>
 						</tr>

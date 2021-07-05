@@ -19,5 +19,5 @@ class Noticia extends Model
 
     protected $casts = [
       'fecha' => 'datetime:d/m/Y',
-      ];
+    ];
 }

@@ -40,7 +40,8 @@
 						<tr role="row">
               <th>ID</th>
               <th >Pago</th>
-              <th >Estado</th>
+                            <th >Estado</th>
+                            <th >Exonerado</th>
               <th >Acciones</th>
             </tr>
 					</thead>
@@ -56,6 +57,16 @@
                 <span class="badge badge-danger">Inactivo</span>
                 @endif
               </td>
+
+                        <td>
+                            @if($pago->exonerado == 1)
+                                <span class="badge badge-success">No exonerado</span>
+                            @else
+                                <span class="badge badge-danger">Exonerado</span>
+                            @endif
+                        </td>
+
+
 							<td>
 								<div class="table-actions">
                   <a href="{{route('editar-pago', $pago->id)}}"> <i class="fa fa-edit text-success"></i> </a>

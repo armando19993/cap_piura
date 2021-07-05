@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoriasPago;
+use App\Models\CertificadoHabilidad;
 use App\Models\Pago;
 use App\Models\Transaccion;
 use App\Models\UsuariosColegiado;
@@ -26,24 +28,35 @@ class TransaccionController extends Controller
 
     public function index()
     {
-        //
+        $pagos = Transaccion::all();
+
+        return view('transacciones.index', ['pagos' => $pagos]);
     }
 
-    public function create()
+    public function detalle(Transaccion $transaccion)
     {
-        //
+        return view('transacciones.detalle', ['pago' => $transaccion]);
+    }
+
+    public function detalle_pago($pago)
+    {
+        $pago = Transaccion::where('id', $pago)->first();
+
+        return $pago;
     }
 
 
     public function store(Request $request, $colegiado)
     {
+
         $colegiado = UsuariosColegiado::find($colegiado);
         $pago = Pago::find($request->pago);
+        $categoria = CategoriasPago::where('id', $pago->categoria_pago_id)->first();
         $trans = new Transaccion();
         $trans->reg_cap = $colegiado->reg_cap;
         $trans->dni = $colegiado->dni;
         $trans->monto = $pago->monto;
-        $trans->pago_concepto = $pago->concepto;
+        $trans->pago_concepto = $categoria->categoria . " - " .$pago->pago;
         $trans->exonerable = $pago->exonerable;
         $trans->estado = 1;
         $trans->fecha = date("Y-m-d");
@@ -89,6 +102,13 @@ class TransaccionController extends Controller
     }
 
     public function update_mercado_pago(Transaccion $pago, $id_mercadopago){
+        if($pago->certificado_id != null){
+            $certificado = CertificadoHabilidad::find($pago->certificado_id);
+            $certificado->pagado = 2;
+
+            app(CertificadoHabilidadController::class)->create_certificado($pago->certificado_id);
+        }
+
         $pago->estado = 2;
         $pago->id_mercadopago = $id_mercadopago;
         $pago->medio_pago = 1;
