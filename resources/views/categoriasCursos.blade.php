@@ -78,7 +78,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label for="">Categoria</label>
-          <input type="text" class="form-control" name="categoria" value="">
+          <input type="text" class="form-control" required name="categoria" value="">
         </div>
       </div>
       <div class="modal-footer">

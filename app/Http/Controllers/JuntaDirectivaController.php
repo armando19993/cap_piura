@@ -15,6 +15,9 @@ class JuntaDirectivaController extends Controller
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $directivas = JuntaDirectiva::with('categoria')->get();
 
         //return $directivas;
@@ -129,4 +132,13 @@ class JuntaDirectivaController extends Controller
       "junta" => $juntaDirectiva
     ]);
   }
+
+  public function juntaByCategory($categoria){
+    $junta = JuntaDirectiva::where('categoria_id', $categoria)->get();
+
+    return response()->json([
+        "junta" => $junta
+    ]);
+  }
+
 }

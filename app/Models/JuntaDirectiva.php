@@ -12,4 +12,12 @@ class JuntaDirectiva extends Model
     public function categoria(){
       return $this->hasOne(CategoriaJuntaDirectiva::class, 'id', 'categoria_id');
     }
+
+    public function getFotoAttribute($value){
+        return "http://localhost:8000/uploads/fotos/".$value;
+    }
+
+    public function getHojaVidaAttribute($value){
+        return "http://localhost:8000/uploads/hojas_vida/".$value;
+    }
 }

@@ -7,15 +7,18 @@ use Illuminate\Http\Request;
 
 class CategoriasPagoController extends Controller
 {
-   
+
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $categorias = CategoriasPago::all();
 
         return view('categoriasPagos', ['categorias' => $categorias]);
     }
 
-    
+
     public function store(Request $request)
     {
         $categoria = new CategoriasPago();
@@ -26,7 +29,7 @@ class CategoriasPagoController extends Controller
 
     }
 
-    
+
     public function update(Request $request)
     {
         $categoria = CategoriasPago::find($request->id);

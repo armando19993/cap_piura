@@ -13,14 +13,18 @@ class BolsaTrabajoController extends Controller
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
+
         $bolsaTrabajo = BolsaTrabajo::all();
 
-        return view('bolsa', ['bolsas' => $bolsaTrabajo]);
+        return view('bolsas.bolsa', ['bolsas' => $bolsaTrabajo]);
     }
 
     public function create()
     {
-        return view('createTrabajo');
+        return view('bolsas.createTrabajo');
     }
 
     public function store(Request $request)
@@ -39,22 +43,28 @@ class BolsaTrabajoController extends Controller
 
     public function show(BolsaTrabajo $bolsaTrabajo)
     {
-        return view('verTrabajo', ['bolsa' => $bolsaTrabajo]);
+        return view('bolsas.verTrabajo', ['bolsa' => $bolsaTrabajo]);
     }
 
     public function edit(BolsaTrabajo $bolsaTrabajo)
     {
-        return view('editTrabajo', ['bolsa' => $bolsaTrabajo]);
+        return view('bolsas.editTrabajo', ['bolsa' => $bolsaTrabajo]);
     }
 
 
     public function update(Request $request, BolsaTrabajo $bolsaTrabajo)
     {
       $bolsaTrabajo->titulo = $request->trabajo;
-      $bolsaTrabajo->fecha = $request->fecha;
+
       $bolsaTrabajo->descripcion = $request->descripcion;
       $bolsaTrabajo->estado = 1;
+
+      if($request->fecha != null){
+        $bolsaTrabajo->fecha = $request->fecha;
+      }
       $bolsaTrabajo->save();
+
+
 
       Session::flash('message','Trabajo Actualizado con Exito!');
       return Redirect::to('/bolsas');

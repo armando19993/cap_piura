@@ -14,13 +14,21 @@ use SimpleSoftwareIO\QrCode\Generator;
 use QrCode;
 use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade as PDF;
+use Facade\FlareClient\View;
 
 class CertificadoHabilidadController extends Controller
 {
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
+        $cartificados = CertificadoHabilidad::all();
 
+        return view('certificados.index', [
+            'certificados' => $cartificados
+        ]);
     }
 
     public function  certificadosColegiados($colegiado){

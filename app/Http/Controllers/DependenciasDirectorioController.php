@@ -13,6 +13,9 @@ class DependenciasDirectorioController extends Controller
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $dependincias = DependenciasDirectorio::all();
 
         return view('dependencias', ['dependencias' => $dependincias]);
@@ -59,7 +62,7 @@ class DependenciasDirectorioController extends Controller
 
     public function indexApi()
     {
-        $dependincias = DependenciasDirectorio::all();
+        $dependincias = DependenciasDirectorio::with('usuarios')->get();
 
         return response()->json([
           'dependencias' => $dependincias

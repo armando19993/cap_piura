@@ -13,12 +13,15 @@ class CategoriaNoticiaController extends Controller
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $categorias = CategoriaNoticia::all();
 
         return view('categoriasNoticias', ['categorias' => $categorias]);
     }
 
-    
+
 
 
     public function store(Request $request)

@@ -12,6 +12,9 @@ class DirectorioController extends Controller
 {
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $directorio = Directorio::all()->first();
 
         return view('directorio', ['directorio' => $directorio]);

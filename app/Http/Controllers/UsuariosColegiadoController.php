@@ -11,6 +11,9 @@ class UsuariosColegiadoController extends Controller
 {
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $usuarios = UsuariosColegiado::all();
 
         return view('usuarios-colegiados.index', ['usuarios' => $usuarios]);

@@ -28,6 +28,9 @@ class TransaccionController extends Controller
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $pagos = Transaccion::all();
 
         return view('transacciones.index', ['pagos' => $pagos]);

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class DependenciasDirectorio extends Model
 {
     use HasFactory;
+
+    public function usuarios(){
+        return $this->hasMany(MiembrosDirectorio::class, 'dependencia_id', 'id');
+    }
 }

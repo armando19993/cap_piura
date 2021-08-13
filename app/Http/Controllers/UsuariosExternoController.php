@@ -11,6 +11,9 @@ class UsuariosExternoController extends Controller
 {
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $usuarios = UsuariosExterno::all();
 
         return view('usuarios-externos.index', ['usuarios' => $usuarios]);

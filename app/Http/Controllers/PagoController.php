@@ -11,6 +11,9 @@ class PagoController extends Controller
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $pagos = Pago::all();
         $categorias = CategoriasPago::all();
         return view('pagos.index', ['pagos' => $pagos, 'categorias' => $categorias]);

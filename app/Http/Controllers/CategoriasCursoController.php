@@ -13,6 +13,9 @@ class CategoriasCursoController extends Controller
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $categorias = CategoriasCurso::all();
 
         return view('categoriasCursos', ['categorias' => $categorias]);

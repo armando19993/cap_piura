@@ -1,113 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+
+<!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
 <head>
-	<!-- Basic Page Info -->
-	<meta charset="utf-8">
-	<title>Inicie Sesion</title>
-
-	<!-- Site favicon -->
-	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
-
-	<!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<!-- Google Font -->
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
-	<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-119386393-1');
-	</script>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Cap Piura</title>
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="assets/css/app.min.css">
+  <link rel="stylesheet" href="assets/bundles/bootstrap-social/bootstrap-social.css">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- Custom style CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
 </head>
-<body class="login-page">
-	<div class="login-header box-shadow">
-		<div class="container-fluid d-flex justify-content-between align-items-center">
-			<div class="brand-logo">
-				<a href="/">
-					<img src="logo.png" alt="" width="15%"> <h1 class="text-primary">CAP PIURA</h1>
-				</a>
-			</div>
-			<div class="login-menu">
 
-			</div>
-		</div>
-	</div>
-	<div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-md-6 col-lg-7">
-					<img src="vendors/images/login-page-img.png" alt="">
-				</div>
-				<div class="col-md-6 col-lg-5">
-					<div class="login-box bg-white box-shadow border-radius-10">
-						<div class="login-title">
-							<h2 class="text-center text-primary">Inicie Sesion en Su Panel</h2>
-						</div>
-						<form method="POST" action="{{ route('login') }}">
-                            @csrf
-
-							<div class="input-group custom">
-								<input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="Usuario / Correo" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-								<div class="input-group-append custom">
-									<span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
-								</div>
-								@error('email')
+<body>
+  <div class="loader"></div>
+  <div id="app">
+    <section class="section">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h4>Iniciar Sesion</h4>
+              </div>
+              <div class="card-body">
+                <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
+                    @csrf
+                  <div class="form-group">
+                    <label for="email">Correo</label>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" name="email" tabindex="1" autocomplete="off" required autofocus>
+                    @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-							</div>
-							<div class="input-group custom">
-								<input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" placeholder="Clave" name="password" required autocomplete="current-password">
-								<div class="input-group-append custom">
-									<span class="input-group-text"><i class="dw dw-padlock1"></i></span>
-								</div>
+                    <div class="invalid-feedback">
+                      Introduca su Email por favor
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="d-block">
+                      <label for="password" class="control-label">Clave</label>
 
-								@error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-							</div>
-							<div class="row pb-30">
+                    </div>
+                    <input id="password" type="password" name="password" class="form-control @error('password') is-invalid @enderror" name="password" tabindex="2" required>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
 
-								<div class="col-12">
-									<div class="forgot-password"><a href="/resetClave">Recuperar Contraseña</a></div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="input-group mb-0">
-										<!--
-											use code for form submit
-											<input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
-										-->
-										<button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar Sesion</button>
-									</div>
+                    <div class="invalid-feedback">
+                      Introduzca su clave por favor
+                    </div>
+                  </div>
 
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- js -->
-	<script src="vendors/scripts/core.js"></script>
-	<script src="vendors/scripts/script.min.js"></script>
-	<script src="vendors/scripts/process.js"></script>
-	<script src="vendors/scripts/layout-settings.js"></script>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                      Iniciar Sesion
+                    </button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- General JS Scripts -->
+  <script src="assets/js/app.min.js"></script>
+  <!-- JS Libraies -->
+  <!-- Page Specific JS File -->
+  <!-- Template JS File -->
+  <script src="assets/js/scripts.js"></script>
+  <!-- Custom JS File -->
+  <script src="assets/js/custom.js"></script>
 </body>
+
+
+<!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
 </html>

@@ -16,6 +16,10 @@ class CursoController extends Controller
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
+
         $cursos = Curso::with('categoria')->withCount('cupos')->get();
         //return $cursos;
         return view('cursos', ['cursos' => $cursos]);

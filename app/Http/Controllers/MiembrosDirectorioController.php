@@ -14,6 +14,9 @@ class MiembrosDirectorioController extends Controller
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $miembros = MiembrosDirectorio::with('dependencia')->get();
 
         return view('miembrosDependencias', ['miembros' => $miembros]);

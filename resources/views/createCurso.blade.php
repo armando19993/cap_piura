@@ -32,7 +32,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Categoria</label>
-            <select class="form-control" name="categoria">
+            <select class="form-control" name="categoria" required>
               <option value="">-- SELECCIONE --</option>
               @foreach($categorias as $categoria)
                 <option value="{{$categoria->id}}">{{$categoria->categoria}}</option>
@@ -44,28 +44,28 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Titulo</label>
-            <input type="text" class="form-control" name="titulo" value="">
+            <input type="text" class="form-control" name="titulo" value="" required>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Fecha de Inicio</label>
-            <input type="date" class="form-control" name="fecha_inicio" value="">
+            <input type="date" class="form-control" name="fecha_inicio" value="" required>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Hora</label>
-            <input type="text" class="form-control" name="hora" value="">
+            <input type="text" class="form-control" name="hora" value="" required>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Modalidad</label>
-            <select name="tipo" id="" class="form-control">
+            <select name="tipo" id="" class="form-control" required>
               <option value="">SELECCIONE</option>
               <option value="1">Virtual</option>
               <option value="2">Presencial</option>
@@ -76,28 +76,28 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Costo</label>
-            <input type="text" class="form-control" name="costo" value="">
+            <input type="text" class="form-control" name="costo" value="" required>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Ubicacion</label>
-            <input type="text" class="form-control" name="ubicacion" value="">
+            <input type="text" class="form-control" name="ubicacion" value="" required>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Cupos Disponibles</label>
-            <input type="number" class="form-control" name="cupos" value="">
+            <input type="number" class="form-control" name="cupos" value="" required>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Whatsapp</label>
-            <input type="number" class="form-control" name="whatsapp" value="">
+            <input type="number" class="form-control" name="whatsapp" value="" required>
           </div>
         </div>
 
@@ -105,14 +105,14 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Foto</label>
-            <input type="file" name="image" class="form-control" id="image" class="form-control">
+            <input type="file" name="image" class="form-control" id="image" class="form-control" required>
           </div>
         </div>
 
         <div class="col-md-12">
           <div class="form-group">
             <label for="">Descripcion</label>
-            <textarea  name="descripcion" id="editor1" class="form-control ckeditor" rows="10" cols="80"></textarea>
+            <textarea  name="descripcion" required id="editor1" class="form-control ckeditor" rows="10" cols="80"></textarea>
           </div>
         </div>
 

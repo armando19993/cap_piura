@@ -5,8 +5,7 @@ use App\Models\Transaccion;
 use App\Models\UsuariosColegiado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-
+use JuntaDirectiva;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -19,6 +18,7 @@ Route::get('noticias', [NoticiaController::class, 'indexApi']);
 Route::get('noticias/{noticia}', [NoticiaController::class, 'noticia']);
 Route::get('noticiasByCategoria/{categoria}', [NoticiaController::class, 'noticiasByCategoria']);
 Route::get('junta', [JuntaDirectivaController::class, 'indexApi']);
+Route::get('juntaByCategory/{categoria}', [JuntaDirectivaController::class, 'juntaByCategory']);
 Route::get('categoriasJuntas', [CategoriaJuntaDirectivaController::class, 'indexApi']);
 Route::get('directorio', [DirectorioController::class, 'indexApi']);
 Route::get('dependencias', [DependenciasDirectorioController::class, 'indexApi']);

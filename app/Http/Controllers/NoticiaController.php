@@ -17,9 +17,12 @@ class NoticiaController extends Controller
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
         $noticias = Noticia::with('categoria')->get();
         //return $noticias[0]->categoria;
-        return view('noticias', ['noticias' => $noticias]);
+        return view('noticias.noticias', ['noticias' => $noticias]);
     }
 
 

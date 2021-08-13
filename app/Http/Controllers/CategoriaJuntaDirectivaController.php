@@ -14,6 +14,9 @@ class CategoriaJuntaDirectivaController extends Controller
 
     public function index()
     {
+        if(Auth::user() == ""){
+            return redirect('/');
+        }
       $categorias = CategoriaJuntaDirectiva::all();
 
       return view('categoriasJuntaDirectiva', ['categorias' => $categorias]);
