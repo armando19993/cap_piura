@@ -19,7 +19,7 @@ class CategoriaJuntaDirectivaController extends Controller
         }
       $categorias = CategoriaJuntaDirectiva::all();
 
-      return view('categoriasJuntaDirectiva', ['categorias' => $categorias]);
+      return view('junta-directiva.categoriasJuntaDirectiva', ['categorias' => $categorias]);
     }
 
 

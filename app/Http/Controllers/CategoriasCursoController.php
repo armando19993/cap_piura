@@ -16,9 +16,9 @@ class CategoriasCursoController extends Controller
         if(Auth::user() == ""){
             return redirect('/');
         }
-        $categorias = CategoriasCurso::all();
+        $categorias = CategoriasCurso::withCount('cursos')->get();
 
-        return view('categoriasCursos', ['categorias' => $categorias]);
+        return view('categorias-cursos.categoriasCursos', ['categorias' => $categorias]);
     }
 
     public function indexApi()

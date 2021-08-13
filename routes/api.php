@@ -24,7 +24,7 @@ Route::get('directorio', [DirectorioController::class, 'indexApi']);
 Route::get('dependencias', [DependenciasDirectorioController::class, 'indexApi']);
 Route::get('miembrosDependencias', [MiembrosDirectorioController::class, 'indexApi']);
 Route::get('categoriasCursos', [CategoriasCursoController::class, 'indexApi']);
-Route::get('cursos', [CursoController::class, 'indexApi']);
+Route::get('curso/{categoria}', [CursoController::class, 'indexApi']);
 
 
 //Usuarios Externos

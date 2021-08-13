@@ -22,7 +22,7 @@ class JuntaDirectivaController extends Controller
 
         //return $directivas;
 
-        return view('juntaDirectiva', ['directivas' => $directivas]);
+        return view('junta-directiva.juntaDirectiva', ['directivas' => $directivas]);
     }
 
 
@@ -30,7 +30,7 @@ class JuntaDirectivaController extends Controller
     {
         $categorias = CategoriaJuntaDirectiva::all();
 
-        return view('createJuntaDirectiva', ['categorias' => $categorias]);
+        return view('junta-directiva.createJuntaDirectiva', ['categorias' => $categorias]);
     }
 
 
@@ -59,14 +59,14 @@ class JuntaDirectivaController extends Controller
     public function show(JuntaDirectiva $juntaDirectiva)
     {
         $categorias = CategoriaJuntaDirectiva::all();
-        return view('verJuntaDirectiva', ['junta' =>$juntaDirectiva, 'categorias' => $categorias ]);
+        return view('junta-directiva.verJuntaDirectiva', ['junta' =>$juntaDirectiva, 'categorias' => $categorias ]);
     }
 
 
     public function edit(JuntaDirectiva $juntaDirectiva)
     {
       $categorias = CategoriaJuntaDirectiva::all();
-      return view('editJuntaDirectiva', ['junta' =>$juntaDirectiva, 'categorias' => $categorias ]);
+      return view('junta-directiva.editJuntaDirectiva', ['junta' =>$juntaDirectiva, 'categorias' => $categorias ]);
     }
 
 

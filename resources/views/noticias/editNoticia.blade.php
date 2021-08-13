@@ -1,4 +1,112 @@
-@extends('layouts.app')
+@extends('layouts.plantilla')
+
+@section('contenido')
+
+
+<div class="card">
+    <div class="card-header">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <h4>Editar Noticia</h4>
+            </div>
+            <div class="col-md-6 text-right">
+                <a class="btn btn-primary" href="{{route('noticias')}}">
+                    Regresar
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+
+
+
+      <form class="" action="{{route('updateNoticia', $noticia->id)}}" method="post" enctype="multipart/form-data">
+        @csrf
+
+            <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Titulo</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="titulo" value="{{$noticia->titulo}}">
+                </div>
+                </div>
+
+
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Categoria</label>
+                        <div class="col-sm-12 col-md-7">
+                            <select class="form-control" name="categoria" required>
+                                <option value="">-- SELECCIONE --</option>
+                                @foreach($categorias as $categoria)
+                                <option value="{{$categoria->id}}" @if($categoria->id == $noticia->categoria_id) selected @endif>{{$categoria->categoria}}</option>
+                                @endforeach
+                              </select>
+                        </div>
+                        </div>
+
+
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Imagenes</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="file" name="image[]" class="form-control" id="image" multiple class="form-control">
+                            </div>
+                            </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="">Descripcion</label>
+                <textarea  name="contenido" id="editor1" class="form-control ckeditor" rows="10" cols="80">{{$noticia->contenido}}</textarea>
+              </div>
+            </div>
+
+            <h3 class="mt-4">Galeria</h3>
+      <hr>
+      <br>
+      <div class="col-md-12">
+
+        <table class="table table-striped table-md" id="table1">
+            <thead>
+                <tr role="row">
+      <th >Imagen</th>
+      <th >Eliminar</th>
+    </tr>
+            </thead>
+            <tbody>
+                @foreach($noticia->imagenes as $imagen)
+            <tr role="row" class="odd">
+                    <td class="table-plus sorting_1" tabindex="0">   <img src="../uploads/noticias/{{$imagen->imagen}}" alt="" width="200px"> </td>
+                    <td>
+                        <div class="table-actions">
+
+                            <a href="{{route('deleteImagenNoticia', $imagen->id)}}" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+  </tbody>
+    </table>
+
+      </div>
+
+            <div class="col-md-12">
+              <input type="submit" name="" class="btn btn-primary text-white form-control" value="Guardar">
+            </div>
+          </div>
+          </form>
+    </div>
+
+  </div>
+@endsection
+
+
+
+
+
+
+
+
+
+
+
 
 @section('contenido')
 <div class="pd-ltr-20 xs-pd-20-10">
@@ -26,13 +134,12 @@
       </div>
     </div>
     <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-      <form class="" action="{{route('updateNoticia', $noticia->id)}}" method="post" enctype="multipart/form-data">
-        @csrf
+
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
             <label for="">Titulo</label>
-            <input type="text" class="form-control" name="titulo" value="{{$noticia->titulo}}">
+
           </div>
         </div>
 
@@ -50,7 +157,7 @@
               <option value="">-- SELECCIONE --</option>
               @foreach($categorias as $categoria)
                 <option value="{{$categoria->id}}" @if($categoria->id == $noticia->categoria_id) selected @endif>{{$categoria->categoria}}</option>
-              @endforeach 
+              @endforeach
             </select>
           </div>
         </div>
@@ -70,19 +177,9 @@
         </div>
 
         <hr>
-      <h3 class="mt-4">Galeria</h3>
-      <hr>
-      <br>
-      <div class="col-md-12">
+        <br>
 
-        <div class="row">
-        @foreach($noticia->imagenes as $imagen)
-          <div class="col-md-4 card p-3 mt-3"> <img src="../uploads/noticias/{{$imagen->imagen}}" alt=""> </div>
-          <div class="col-md-2"> <a href="{{route('deleteImagenNoticia', $imagen->id)}}"><i class="fa fa-trash text-danger" style="font-size: 3em"></i></a></div>
-        @endforeach
-        </div>
-      </div>
-        
+
 
         <div class="col-md-12">
           <input type="submit" name="" class="btn btn-primary text-white form-control" value="Guardar">

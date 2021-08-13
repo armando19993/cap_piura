@@ -7,7 +7,7 @@
     <div class="card-header">
         <div class="row col-md-12">
             <div class="col-md-6">
-                <h4>Editar Trabajo</h4>
+                <h4>Crear Trabajo</h4>
             </div>
             <div class="col-md-6 text-right">
                 <a class="btn btn-primary" href="{{route('bolsas')}}">
