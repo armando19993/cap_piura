@@ -31,14 +31,14 @@ class NoticiaController extends Controller
     {
         $categorias = CategoriaNoticia::all();
 
-        return view('createNoticia', ['categorias' => $categorias]);
+        return view('noticias.createNoticia', ['categorias' => $categorias]);
     }
 
     public function edit(Noticia $noticia)
     {
         $categorias = CategoriaNoticia::all();
 
-        return view('editNoticia', ['categorias' => $categorias, 'noticia' => $noticia]);
+        return view('noticias.editNoticia', ['categorias' => $categorias, 'noticia' => $noticia]);
     }
 
 
@@ -94,7 +94,7 @@ class NoticiaController extends Controller
     {
       $noticia = Noticia::where('id', $noticia)->with('categoria', 'imagenes')->first();
       //return $noticia;
-      return view('verNoticia', ['noticia' => $noticia]);
+      return view('noticias.verNoticia', ['noticia' => $noticia]);
     }
 
 

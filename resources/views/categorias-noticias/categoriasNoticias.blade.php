@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.plantilla')
 
 @section('contenido')
   @if(Session::has('message'))
@@ -8,59 +8,74 @@
 </div>
 @endif
 
-
-<div class="pd-ltr-20 xs-pd-20-10">
-  <div class="min-height-200px">
-    <div class="page-header">
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <div class="title">
-            <h4>Categoria de Noticias</h4>
-          </div>
-          <nav aria-label="breadcrumb" role="navigation">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{route('home')}}">Noticias</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Categorias</li>
-            </ol>
-          </nav>
+<div class="card">
+    <div class="card-header">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <h4>Categorias de Noticias</h4>
+            </div>
+            <div class="col-md-6 text-right">
+                <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-plus-circle"></i>  Crear Categoria
+                  </a>
+            </div>
         </div>
-        <div class="col-md-6 col-sm-12 text-right">
-
-            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#exampleModal">
-              <i class="fa fa-plus-circle"></i>  Crear Categoria
-            </a>
-
-        </div>
+    </div>
+    <div class="card-body p-3">
+      <div class="table-responsive">
+        <table class="table table-striped table-md" id="table1">
+            <thead>
+                <tr role="row">
+      <th>ID</th>
+      <th >Categoria</th>
+      <th >Acciones</th>
+    </tr>
+            </thead>
+            <tbody>
+  @foreach($categorias as $categoria)
+            <tr role="row" class="odd">
+                    <td class="table-plus sorting_1" tabindex="0"> {{$categoria->id}} </td>
+                    <td>{{$categoria->categoria}}</td>
+                    <td>
+                        <div class="table-actions">
+                            <a href="#" onclick="editarCategoria({{$categoria->id}}, '{{$categoria->categoria}}')" class="btn btn-success">Editar</a>
+                            <a href="{{route('deleteCategoriaNoticia', $categoria->id)}}" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+  @endforeach
+  </tbody>
+    </table>
       </div>
     </div>
-    <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
+  </div>
 
-      <table class="data-table table nowrap dataTable no-footer dtr-inline" id="DataTables_Table_0" role="grid">
-					<thead>
-						<tr role="row">
-              <th>ID</th>
-              <th >Categoria</th>
-              <th >Acciones</th>
-            </tr>
-					</thead>
-					<tbody>
-          @foreach($categorias as $categoria)
-					<tr role="row" class="odd">
-							<td class="table-plus sorting_1" tabindex="0"> {{$categoria->id}} </td>
-							<td>{{$categoria->categoria}}</td>
-							<td>
-								<div class="table-actions">
-                  <a href="#" onclick="editarCategoria({{$categoria->id}}, '{{$categoria->categoria}}')"><i class="icon-copy dw dw-edit text-success"></i></a>
-									<a href="{{route('deleteCategoriaNoticia', $categoria->id)}}" ><i class="icon-copy dw dw-delete-3 text-danger"></i></a>
-								</div>
-							</td>
-						</tr>
-          @endforeach
-          </tbody>
-				</table>
-
-    </div>
 @endsection
+
+
+@section('scripts')
+<script>
+    $('#table1').dataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        },
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+    paging: true,
+    searching: true
+    }
+     );
+</script>
+@endsection
+
+
+
+
+
+
+
+
 
 
 <!-- Modal -->
@@ -78,7 +93,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label for="">Categoria</label>
-          <input type="text" class="form-control" name="categoria" value="">
+          <input type="text" class="form-control" required name="categoria" value="">
         </div>
       </div>
       <div class="modal-footer">

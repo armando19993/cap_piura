@@ -18,7 +18,7 @@ class CategoriaNoticiaController extends Controller
         }
         $categorias = CategoriaNoticia::all();
 
-        return view('categoriasNoticias', ['categorias' => $categorias]);
+        return view('categorias-noticias.categoriasNoticias', ['categorias' => $categorias]);
     }
 
 
